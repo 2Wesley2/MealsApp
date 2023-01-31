@@ -4,7 +4,7 @@ import '../models/category.dart';
 class CategoryItem extends StatelessWidget {
   final Category category;
 
-  CategoryItem(this.category, {super.key});
+  const CategoryItem(this.category, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,10 @@ class CategoryItem extends StatelessWidget {
           end: Alignment.bottomRight,
         ),
       ),
-      child: Text(category.title),
+      child: Text(
+        category.title,
+        style: Theme.of(context).textTheme.titleLarge,
+      ),
     );
   }
 }
