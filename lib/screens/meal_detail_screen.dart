@@ -2,6 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
 
 class MealDetailScreen extends StatelessWidget {
+  Widget _createSectionTitle(BuildContext context, String title) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      child: Text(
+        title,
+        style: Theme.of(context).textTheme.titleLarge,
+      ),
+    );
+  }
+
+  Widget _createSectionContainer(Widget child) {
+    return Container(
+      width: 300,
+      height: 200,
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: child,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final meal = ModalRoute.of(context)!.settings.arguments as Meal;
@@ -20,24 +45,9 @@ class MealDetailScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 10),
-            child: Text(
-              'ingredientes',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-          ),
-          Container(
-            width: 300,
-            height: 200,
-            padding: const EdgeInsets.all(10),
-            margin: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: ListView.builder(
+          _createSectionTitle(context, 'igredientes'),
+          _createSectionContainer(
+            ListView.builder(
               itemCount: meal.ingredients.length,
               itemBuilder: (ctx, index) {
                 return Card(
@@ -52,7 +62,7 @@ class MealDetailScreen extends StatelessWidget {
                 );
               },
             ),
-          )
+          ),
         ],
       ),
     );
