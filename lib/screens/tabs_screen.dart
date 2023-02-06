@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'favorite_screen.dart';
 import 'categories_screen.dart';
+import '../components/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _TabsScreenState extends State<TabsScreen> {
   final List<Map<String, Object>> _screens = [
     {
       'title': 'Lista de Categorias',
-      'screen': CategoriesScreen(),
+      'screen': const CategoriesScreen(),
     },
     {
       'title': 'Lista de Categorias',
@@ -33,6 +34,7 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         title: Text(_screens[_selectedScreenIndex]['title'] as String),
       ),
+      drawer: const MainDrawer(),
       body: _screens[_selectedScreenIndex]['screen'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectScreen,
