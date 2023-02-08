@@ -24,7 +24,7 @@ class MealsApp extends StatefulWidget {
 class _MealsAppState extends State<MealsApp> {
   Settings settings = Settings();
   List<Meal> _availableMeals = dummyMeals;
-  List<Meal> _favoriteMeals = [];
+  final List<Meal> _favoriteMeals = [];
 
   void _filterMeals(Settings settings) {
     setState(
@@ -47,7 +47,6 @@ class _MealsAppState extends State<MealsApp> {
     );
   }
 
-  @override
   void _toggleFavorite(Meal meal) {
     super.setState(() {
       _favoriteMeals.contains(meal)

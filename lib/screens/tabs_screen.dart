@@ -6,7 +6,7 @@ import '../models/meal.dart';
 
 class TabsScreen extends StatefulWidget {
   final List<Meal> _favoriteMeals;
-  TabsScreen(this._favoriteMeals, {Key? key}) : super(key: key);
+  const TabsScreen(this._favoriteMeals, {Key? key}) : super(key: key);
   @override
   State<TabsScreen> createState() => _TabsScreenState();
 }

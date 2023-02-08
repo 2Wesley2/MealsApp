@@ -4,7 +4,7 @@ import 'package:meals/models/meal.dart';
 class MealDetailScreen extends StatelessWidget {
   final Function(Meal) onToggleFavorite;
   final bool Function(Meal) isFavorite;
-  const MealDetailScreen(this.isFavorite, this.onToggleFavorite);
+  const MealDetailScreen(this.isFavorite, this.onToggleFavorite, {super.key});
 
   Widget _createSectionTitle(BuildContext context, String title) {
     return Container(
