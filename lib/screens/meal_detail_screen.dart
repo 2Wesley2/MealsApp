@@ -3,8 +3,8 @@ import 'package:meals/models/meal.dart';
 
 class MealDetailScreen extends StatelessWidget {
   final Function(Meal) onToggleFavorite;
-
-  const MealDetailScreen(this.onToggleFavorite);
+  final bool Function(Meal) isFavorite;
+  const MealDetailScreen(this.isFavorite, this.onToggleFavorite);
 
   Widget _createSectionTitle(BuildContext context, String title) {
     return Container(
@@ -94,7 +94,9 @@ class MealDetailScreen extends StatelessWidget {
         onPressed: () {
           onToggleFavorite(meal);
         },
-        child: const Icon(Icons.star),
+        child: Icon(
+          isFavorite(meal) ? Icons.star : Icons.star_border,
+        ),
       ),
     );
   }
