@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
 
 class MealDetailScreen extends StatelessWidget {
-  const MealDetailScreen({super.key});
+  final Function(Meal) onToggleFavorite;
+
+  const MealDetailScreen(this.onToggleFavorite);
 
   Widget _createSectionTitle(BuildContext context, String title) {
     return Container(
@@ -40,7 +42,7 @@ class MealDetailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Container(
+            SizedBox(
               height: 300,
               width: double.infinity,
               child: Image.network(
@@ -90,9 +92,9 @@ class MealDetailScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).pop();
+          onToggleFavorite(meal);
         },
-        child: Icon(Icons.star),
+        child: const Icon(Icons.star),
       ),
     );
   }
